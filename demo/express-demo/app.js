@@ -31,17 +31,18 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+//socket 服务
 var server = http.createServer(app),
     io = require("socket.io").listen(server);
 
 function tick(){
     var now = new Date().toUTCString();
     io.sockets.send(now);
-    console.log(now)
 }
 
 setInterval(tick, 1000);
 
+//启动server
 server.listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });

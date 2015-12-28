@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>socket test</title>
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: "http://10.20.135.19:3000/json/httptest.json",
+            type: "get",
+//            dataType: "jsonp",
+            success: function(data) {
+                document.body.innerHTML = data.message;
+            }
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

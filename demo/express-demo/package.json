@@ -20,5 +20,8 @@
   },
   "main": "app.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mongodb": "^2.1.2"
+  }
 }

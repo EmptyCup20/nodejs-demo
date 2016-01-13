@@ -1,5 +1,7 @@
 var express = require('express')
     , routes = require('./routes')
+    , httpRouters = require('./routes/http')
+    , tcpRouters = require('./routes/tcp')
     , bodyParser = require('body-parser')
     , cookieParser = require('cookie-parser')
     , logger = require('morgan')
@@ -23,6 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/http', httpRouters);
+app.use('/', tcpRouters);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,7 +5,7 @@ var express = require('express'),
 
 /* 第一个http测试
  * 通过跨域请求的测试 */
-router.get('/', function(req, res, next) {
+router.get('/http', function(req, res, next) {
     res.render('firsthttp', null);
 });
 

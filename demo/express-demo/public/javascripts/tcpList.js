@@ -1,5 +1,11 @@
 /**
  *
+ * @Author xiangxiao3
+ * @Date   2016/1/14
+ *
+ */
+/**
+ *
  * @Author zhangxin14
  * @Date   2015/11/23
  *
@@ -9,7 +15,7 @@ var app = angular.module("myApp", []).controller("EmployeeCtrl", ["$scope", "$ht
 
     //获取用户,用jquery的ajax会导致scope不变化的问题出现
     var getUsers = function(){
-        $http.post("/http/getUsers").success(function(data) {
+        $http.post("/tcp/getTcpList").success(function(data) {
             $scope.employees = data;
         });
     }
@@ -74,9 +80,9 @@ var app = angular.module("myApp", []).controller("EmployeeCtrl", ["$scope", "$ht
             //保存用户
             $http({
                 method : "POST",
-                url : "/http/removeUser",
+                url : "/tcp/removeUser",
                 params : {
-                    "_id" : $scope.selectedEmployee._id
+                    "id" : $scope.selectedEmployee.id
                 }
             }).success(function(data){
                 for (var i = 0; i < $scope.employees.length; i++) {
@@ -94,15 +100,10 @@ var app = angular.module("myApp", []).controller("EmployeeCtrl", ["$scope", "$ht
         //保存用户
         $http({
             method : "POST",
-            url : "/http/saveUser",
+            url : "/tcp/saveUser",
             params : {
-                "_id" : $scope.editingEmployee._id,
-                "name" : $scope.editingEmployee.name,
-                "age" : $scope.editingEmployee.age,
-                "gender" : $scope.editingEmployee.gender,
-                "province" : $scope.editingEmployee.province,
-                "city" : $scope.editingEmployee.city,
-                "minority" : $scope.editingEmployee.minority
+                "id" : $scope.editingEmployee.id,
+                "name" : $scope.editingEmployee.name
             }
         }).success(function(data){
             //保存后的数据返回

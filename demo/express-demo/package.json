@@ -22,6 +22,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mongodb": "^2.1.2"
+    "ExBuffer": "^0.2.4",
+    "mongodb": "^2.1.2",
+    "thrift": "^0.9.3"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "name": "thrift-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xiangxiao3",
+  "license": "ISC",
+  "devDependencies": {
+    "thrift": "^0.9.3"
+  }
+}

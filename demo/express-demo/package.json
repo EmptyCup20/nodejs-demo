@@ -24,6 +24,7 @@
   "devDependencies": {
     "ExBuffer": "^0.2.4",
     "mongodb": "^2.1.2",
+    "socket.io": "^1.4.5",
     "thrift": "^0.9.3"
   }
 }

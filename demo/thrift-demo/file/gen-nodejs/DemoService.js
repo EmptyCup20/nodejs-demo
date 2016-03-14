@@ -8,7 +8,7 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 
-var ttypes = require('./demo_types');
+var ttypes = require('./DemoService_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
 DemoService_sayHi_args = function(args) {
@@ -65,6 +65,12 @@ DemoService_sayHi_args.prototype.write = function(output) {
 };
 
 DemoService_sayHi_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = args.success;
+    }
+  }
 };
 DemoService_sayHi_result.prototype = {};
 DemoService_sayHi_result.prototype.read = function(input) {
@@ -78,7 +84,21 @@ DemoService_sayHi_result.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRING) {
+        this.success = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -87,6 +107,11 @@ DemoService_sayHi_result.prototype.read = function(input) {
 
 DemoService_sayHi_result.prototype.write = function(output) {
   output.writeStructBegin('DemoService_sayHi_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.STRING, 0);
+    output.writeString(this.success);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -143,7 +168,10 @@ DemoServiceClient.prototype.recv_sayHi = function(input,mtype,rseqid) {
   result.read(input);
   input.readMessageEnd();
 
-  callback(null)
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('sayHi failed: unknown result');
 };
 DemoServiceProcessor = exports.Processor = function(handler) {
   this._handler = handler

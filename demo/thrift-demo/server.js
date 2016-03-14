@@ -3,7 +3,7 @@
  */
 var thrift = require('thrift');
 var demo = require('./file/gen-nodejs/DemoService.js');
-var demoTypes = require('./file/gen-nodejs/demo_types.js');
+var demoTypes = require('./file/gen-nodejs/DemoService_types.js');
 
 var server = thrift.createServer(demo, {
     sayHi: function(name) {

@@ -8,6 +8,7 @@ var demoTypes = require('./file/gen-nodejs/DemoService_types.js');
 var server = thrift.createServer(demo, {
     sayHi: function(name) {
         console.log("server stored:", name);
+        return "xxx"
     }
 });
 

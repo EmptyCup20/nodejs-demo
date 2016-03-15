@@ -6,8 +6,8 @@ var demo = require('./file/gen-nodejs/DemoService.js');
 var demoTypes = require('./file/gen-nodejs/DemoService_types.js');
 
 
-var connection = thrift.createConnection('10.20.134.19', 9090),
-//var connection = thrift.createConnection('localhost', 7911),
+//var connection = thrift.createConnection('10.20.134.19', 9090),
+var connection = thrift.createConnection('localhost', 7911),
 
     client = thrift.createClient(demo, connection);
 
@@ -19,4 +19,10 @@ connection.on('error', function(err) {
 
 });
 
-console.log(client.sayHi('tomdog').toString());
+var data = client.sayHi('tomdog', function(err, response) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(response);
+    }
+});

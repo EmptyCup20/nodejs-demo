@@ -1,0 +1,14 @@
+{
+  "name": "connect-redis",
+  "version": "1.0.0",
+  "description": "redis test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xiangxiao3",
+  "license": "ISC",
+  "devDependencies": {
+    "redis": "^2.5.0-1"
+  }
+}

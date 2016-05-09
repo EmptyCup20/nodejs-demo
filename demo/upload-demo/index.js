@@ -10,6 +10,7 @@ var formidable = require('formidable'),
 
 http.createServer(function(req, res) {
     if (req.url == '/upload' && req.method.toLowerCase() == 'post') {
+
         // parse a file upload
         var form = new formidable.IncomingForm();
         form.encoding = 'utf-8';		//设置编辑
@@ -24,25 +25,24 @@ http.createServer(function(req, res) {
             }
             res.writeHead(200, {'content-type': 'text/plain'});
             res.write('received upload:\n\n');
-            res.end(util.inspect({fields: fields, files: files}));
+            //res.end(util.inspect({fields: fields, files: files}));
             //删除文件
 
             //这边循环跑上传，会出现死循环 -_-
-            var formData = {
-                // Pass a simple key-value pair
-                my_field: 'my_value',
-                // Pass data via Buffers
-                my_buffer: new Buffer([1, 2, 3]),
-                // Pass data via Streams
-                upload: fs.createReadStream(files.upload.path),
-            };
-            request.post({url:'http://localhost:8080/upload', formData: formData}, function optionalCallback(err, httpResponse, body) {
-                if (err) {
-                    return console.error('upload failed:', err);
-                }
-                console.log('Upload successful!  Server responded with:', body);
-            });
-            fs.unlinkSync(files.upload.path);
+            //var formData = {
+            //    // Pass a simple key-value pair
+            //    userId  : '1',
+            //    storeId  : '1',
+            //    // Pass data via Streams
+            //    upload: fs.createReadStream(files.upload.path)
+            //};
+            //request.post({url:'http://10.20.135.22:5566/control/core/video/uploadCatch', formData: formData}, function optionalCallback(err, httpResponse, body) {
+            //    if (err) {
+            //        return console.error('upload failed:', err);
+            //    }
+            //    console.log('Upload successful!  Server responded with:', body);
+            //});
+            //fs.unlinkSync(files.upload.path);
         });
 
         return;

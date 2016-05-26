@@ -14,5 +14,9 @@
     "mochawesome": "^1.3.2",
     "mongodb": "^2.1.10",
     "superagent": "^1.8.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {}
 }

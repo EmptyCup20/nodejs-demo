@@ -4,8 +4,9 @@
 var formidable = require('formidable'),
     http = require('http'),
     util = require('util'),
+    path = require('path'),
     fs = require('fs')
-    gm = require('gm')
+    gm = require('gm'),
     request = require('request');
 
 http.createServer(function(req, res) {
@@ -29,19 +30,28 @@ http.createServer(function(req, res) {
             //删除文件
 
             //这边循环跑上传，会出现死循环 -_-
-            //var formData = {
-            //    // Pass a simple key-value pair
-            //    userId  : '1',
-            //    storeId  : '1',
-            //    // Pass data via Streams
-            //    upload: fs.createReadStream(files.upload.path)
-            //};
+            var formData = {
+                // Pass a simple key-value pair
+                userId  : '1',
+                storeId  : '1',
+                // Pass data via Streams
+                upload: fs.createReadStream(files.upload.path)
+            };
             //request.post({url:'http://10.20.135.22:5566/control/core/video/uploadCatch', formData: formData}, function optionalCallback(err, httpResponse, body) {
             //    if (err) {
             //        return console.error('upload failed:', err);
             //    }
             //    console.log('Upload successful!  Server responded with:', body);
             //});
+            request.del({
+                url:'https://10.33.39.125:8888/containers/cc_pic',
+                ca : fs.readFileSync("demo/upload-demo/gem/cacert.pem")
+            }, function optionalCallback(err, httpResponse, body) {
+                if (err) {
+                    return console.error('upload failed:', err);
+                }
+                console.log('Upload successful!  Server responded with:', body);
+            });
             //fs.unlinkSync(files.upload.path);
         });
 

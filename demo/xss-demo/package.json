@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.13.4",
     "xss": "^0.2.13"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "xss-filter-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "xss": "^0.2.13"
+  }
+}

@@ -5,7 +5,6 @@
 var xss = require('xss');
 var options = {
     whiteList: {
-        a: ['href', 'title', 'target']
     }
 };
 var myxss = new xss.FilterXSS(options);

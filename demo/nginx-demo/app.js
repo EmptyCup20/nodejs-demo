@@ -7,7 +7,7 @@ var express = require('express')
     , cookieParser = require('cookie-parser')
     , http = require('http')
     , path = require('path')
-    , session = require("express-session")
+    , cookieSession = require('cookie-session')
     , ejs = require('ejs');
 
 var app = express();
@@ -22,18 +22,18 @@ app.set('view engine', 'html');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.favicon());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-    secret: "nginx"
-}));
+app.use(cookieSession({
+    name: 'nginx'
+}))
 
 router.get('/', function(req, res, next) {
-    req.session.ip = "10.25.20.35";
-    req.session.userName = "xxxx";
+    req.session.ip = "10.20.135.22";
     res.render('index', {
         title: 'Express',
-        ip : "10.25.20.35",
+        ip : "10.20.135.22",
         sessionId : req.session.id,
         userName : req.session.userName
     });

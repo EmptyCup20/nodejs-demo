@@ -30,11 +30,12 @@ app.use(session({
 
 router.get('/', function(req, res, next) {
     req.session.ip = "10.25.20.35";
-    req.session.port = "3000";
+    req.session.userName = "xxxx";
     res.render('index', {
         title: 'Express',
         ip : "10.25.20.35",
-        sessionId : req.session.id
+        sessionId : req.session.id,
+        userName : req.session.userName
     });
 });
 

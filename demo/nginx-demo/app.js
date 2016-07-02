@@ -33,7 +33,8 @@ router.get('/', function(req, res, next) {
     req.session.port = "3000";
     res.render('index', {
         title: 'Express',
-        ip : "10.25.20.35"
+        ip : "10.25.20.35",
+        sessionId : req.session.id
     });
 });
 

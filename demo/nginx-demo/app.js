@@ -29,9 +29,12 @@ app.use(session({
 }));
 
 router.get('/', function(req, res, next) {
-    req.session.ip = "10.20.135.22";
+    req.session.ip = "10.25.20.35";
     req.session.port = "3000";
-    res.render('index', { title: 'Express' });
+    res.render('index', {
+        title: 'Express',
+        ip : "10.25.20.35"
+    });
 });
 
 router.post('/mypost', function(req, res, next) {

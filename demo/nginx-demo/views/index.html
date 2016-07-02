@@ -13,6 +13,13 @@
     <input type="text" name="name">
     <input type="submit">
 </form>
-
+<div id="socket"></div>
 </body>
+<script type="text/javascript" src="/js/socket.io.js"></script>
+<script type="text/javascript">
+    var socket = io.connect();
+    socket.on("message", function(time){
+        document.getElementById("socket").innerHTML = time;
+    })
+</script>
 </html>

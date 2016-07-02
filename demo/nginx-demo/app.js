@@ -22,15 +22,17 @@ app.set('view engine', 'html');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.favicon());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
-    name: 'nginx'
+    name: 'nginx',
+    keys: ['key1', 'key2']
 }))
 
 router.get('/', function(req, res, next) {
     req.session.ip = "10.20.135.22";
+    req.session.id = "aaaaaaaaa";
+    req.session.userName = "xxxxxxx",
     res.render('index', {
         title: 'Express',
         ip : "10.20.135.22",
@@ -51,8 +53,18 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-//server 服务
-var server = http.createServer(app);
+
+//socket 服务
+var server = http.createServer(app),
+    io = require("socket.io").listen(server);
+
+function tick(){
+    var now = new Date().toUTCString();
+    io.sockets.send(now);
+}
+
+setInterval(tick, 1000);
+
 //启动server
 server.listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

@@ -14,10 +14,6 @@ mongodb 完成user 表导入
 
 安装mongodb数据库
 
-socket测试 ：http://localhost:3000/firstsocket
-
-http测试 ：http://localhost:3000/firsthttp
-
 2.redis验证
 
 连接redis服务器获取单条数据
@@ -25,3 +21,15 @@ http测试 ：http://localhost:3000/firsthttp
 3.thrift验证
 
 简单的1+1测试，调用后端接口，并做数据传输
+
+4.upload-demo
+
+上传文件的demo
+
+5.redis demo
+
+改为redis连接池实现
+
+6.log-demo
+
+7.nginx-demo

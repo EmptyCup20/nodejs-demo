@@ -3,25 +3,22 @@
  */
 var yieldController = require('../service/yield_controller.js')
     , expect = require('chai').expect
-    , co = require("co")
-    , request = require("request");
+    , co = require("co");
 
 describe('性能测试', function() {
-    it('yield', function() {
-        request.get('https://api.github.com', null, function (error, response, data) {
-            if (!error && response.statusCode == 200) {
-                resolve(data);
-            }else{
-                reject(new Error(this.statusText));
+    it('20个yield', function(done) {
+        co(function*() {
+            var start = new Date();
+            console.log(start);
+            for(var i = 0; i < 20; i ++ ){
+                yield yieldController.getUrl('https://www.baidu.com');
             }
-        })
-        //co(function*() {
-        //    //for(var i = 0; i < 10; i ++){
-        //        var data = yield yieldController.getUrl('https://api.github.com');
-        //    //}
-        //    //expect(res).to.be.an('object');
-        //    console.log("done");
-        //    done();
-        //}).catch(err => next(new Error(err)));
+            var end = new Date();
+            var mid = end - start;
+            console.log("done");
+            console.log(end);
+            console.log(mid);
+            done();
+        }).catch(err => next(new Error(err)));
     });
 });

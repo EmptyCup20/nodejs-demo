@@ -36,4 +36,6 @@ mongodb 完成user 表导入
 
 ## 8.performance-test-demo
 
-测试性能问题，
+测试性能问题
+
+20个promise和20个yield测试，中间消耗性能差值不大(测试次数20次左右)

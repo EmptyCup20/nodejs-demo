@@ -39,3 +39,8 @@ mongodb 完成user 表导入
 测试性能问题
 
 20个promise和20个yield测试，中间消耗性能差值不大(测试次数20次左右)
+
+## 9.restfulAndMocha-demo
+
+（1）在Node端的controller层使用restful风格的接口
+（2）写mocha测试用例：模拟测试Java端的接口和Node端controller层的接口

@@ -1,0 +1,104 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-md-9
+                .bs-docs-section
+                    .btn.btn-primary#searchAllBtn(type="submit") 查询所有用户
+                .bs-docs-section
+                    .btn.btn-primary#searchUserBtn(type="submit") 查询单个用户
+                .bs-docs-section
+                    form
+                        .form-group
+                            label Email address
+                            input.form-control#emailAdd(type="email", placeholder="Email", style="box-sizing: border-box;")
+                        .form-group
+                            label Password
+                            input.form-control#pwdAdd(type="password", placeholder="Password", style="box-sizing: border-box;")
+                        .btn.btn-info#addBtn(type="submit") 新增
+                .bs-docs-section
+                    form
+                        .form-group
+                            label Email address
+                            input.form-control#emailEdit(type="email", placeholder="Email", style="box-sizing: border-box;")
+                        .form-group
+                            label Password
+                            input.form-control#pwdEdit(type="password", placeholder="Password", style="box-sizing: border-box;")
+                        .btn.btn-success#editBtn(type="submit") 修改
+                .bs-docs-section
+                    .btn.btn-danger#deleteBtn(type="submit") 删除
+                .bs-docs-section
+                    .btn.btn-danger#deleteBatchBtn(type="submit") 批量删除
+
+block includejs
+    script.
+        $('#searchAllBtn').on('click', function() {
+            $.ajax({
+                url: '/control/user',
+                type: 'GET',
+                data: {
+                    pageNo: '1',
+                    pageSize: '15'
+                },
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        });
+        $('#searchUserBtn').on('click', function() {
+            $.ajax({
+                url: '/control/user/111',
+                type: 'GET',
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        });
+        $('#addBtn').on('click', function() {
+            $.ajax({
+                url: '/control/user',
+                type: 'POST',
+                data: {
+                    email: $('#emailAdd').val(),
+                    password: $('#pwdAdd').val()
+                },
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        });
+        $('#editBtn').on('click', function() {
+            $.ajax({
+                url: '/control/user/222',
+                type: 'PUT',
+                data: {
+                    email: $('#emailEdit').val(),
+                    password: $('#pwdEdit').val()
+                },
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        });
+        $('#deleteBtn').on('click', function() {
+            $.ajax({
+                url: '/control/user/333',
+                type: 'DELETE',
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        });
+        $('#deleteBatchBtn').on('click', function() {
+            $.ajax({
+                url: '/control/user',
+                type: 'DELETE',
+                data: {
+                    ids: '111,222,333'
+                },
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        });

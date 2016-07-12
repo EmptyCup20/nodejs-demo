@@ -46,4 +46,4 @@ mongodb 完成user 表导入
 （2）写mocha测试用例：模拟测试Java端的接口和Node端controller层的接口
 ## 10.ccap-demo
 
-`注意`:ccap-demo不需要npm install 直接使用即可
+`注意`:ccap依赖了c++的cImg库,所以如果直接通过npm install进行安装依赖包的话需要在本机上配置相关的编译环境,此demo已经将编译好的文件替换了,所以ccap-demo不需要npm install 直接使用即可

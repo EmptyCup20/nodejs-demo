@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	div.container
+		p#captcha
+			label captcha:
+			input.captcha(type="text",placeholder="please input captcha")
+			img(src="/getCaptcha?_"+ (new Date()).getTime() +"")
+		span#login verfiy captcha

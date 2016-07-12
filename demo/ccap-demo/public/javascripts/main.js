@@ -18,13 +18,7 @@ jQuery(document).ready(function($) {
 	});
 	$('#captcha').on('click','img',function(event) {
 		$('#captcha img').remove();
+		//直接返回的是二进制的图片流
 		$('#captcha').append('<img src="/getCaptcha?_'+ (new Date()).getTime() +'" />')
-		// $.ajax({
-		// 	url:'/getCaptcha',
-		// 	type:'post',
-		// 	success:function(data){
-		// 		console.log(data);
-		// 	}
-		// })
 	});
 });

@@ -44,3 +44,6 @@ mongodb 完成user 表导入
 
 （1）在Node端的controller层使用restful风格的接口
 （2）写mocha测试用例：模拟测试Java端的接口和Node端controller层的接口
+## 10.ccap-demo
+
+`注意`:ccap-demo不需要npm install 直接使用即可
